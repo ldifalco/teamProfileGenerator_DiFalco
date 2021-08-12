@@ -7,8 +7,9 @@ const fs = require('fs');
 
 const engineerArray = [];
 const internArray = [];
-const ManagerArray = [];
+const managerArray = [];
 //initial prompt for adding teammates
+function init() {
 inquirer
     .prompt([
         {
@@ -71,7 +72,7 @@ function addEngineer() {
         engineerArray.push(engineer)
         init()
     })
-}
+
 
 //Intern Function
 
@@ -108,7 +109,7 @@ function addIntern() {
         internArray.push(intern)
         init()
     })
-}
+
 
 //Manager Function
 
@@ -141,9 +142,7 @@ function addManager() {
         ])
     .then((answers) => {
         const manager = new Manager(answers.name, answers.id, answers.email, answers.office)
-        managerArray.push(intern)
+        managerArray.push(manager)
         init()
     })
-}
 
-init()

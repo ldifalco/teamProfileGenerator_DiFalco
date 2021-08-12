@@ -10,34 +10,35 @@ const internArray = [];
 const managerArray = [];
 //initial prompt for adding teammates
 function init() {
-inquirer
-    .prompt([
-        {
-            type: 'list',
-            name: 'newTeammate',
-            message: 'Select a new teammate',
-            choices: [
-                'Engineer',
-                'Intern',
-                'Team Manager',
-                'No more new employees'
+    inquirer
+        .prompt([
+            {
+                type: 'list',
+                name: 'newTeammate',
+                message: 'Select a new teammate',
+                choices: [
+                    'Engineer',
+                    'Intern',
+                    'Team Manager',
+                    'No more new employees'
 
-            ]
-        }])
+                ]
+            }
+        ])
         //if statement regarding which teammate is added
         .then((choice) => {
-            if(choice.newTeammate === 'Engineer') {
+            if (choice.newTeammate === 'Engineer') {
                 addEngineer()
-            }else if(choice.newTeammate === 'Intern') {
+            } else if (choice.newTeammate === 'Intern') {
                 addIntern()
-            }else if (choice.newTeammate === 'Manager') {
+            } else if (choice.newTeammate === 'Manager') {
                 addManager()
-            }else{
+            } else {
                 console.log("Team finalized")
             }
-        }
-    )
+    })}
 
+        
 //functions for after choosing a new employee
 
 //Engineer: NAME ID EMAIL GITHUB
@@ -67,82 +68,83 @@ function addEngineer() {
             },
 
         ])
-    .then((answers) => {
-        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
-        engineerArray.push(engineer)
-        init()
-    })
+        .then((answers) => {
+            const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
+            engineerArray.push(engineer)
+            init()
+        })}
 
 
-//Intern Function
+    //Intern Function
 
-//Intern: NAME ID EMAIL SCHOOL
-
-
-function addIntern() {
-    inquirer
-        .prompt([
-            {
-                type: 'input',
-                name: 'name',
-                message: 'Enter your name',
-            },
-            {
-                type: 'input',
-                name: 'id',
-                message: 'Enter your ID',
-            },
-            {
-                type: 'input',
-                name: 'email',
-                message: 'Enter your email',
-            },
-            {
-                type: 'input',
-                name: 'school',
-                message: 'Enter your school name',
-            },
-
-        ])
-    .then((answers) => {
-        const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
-        internArray.push(intern)
-        init()
-    })
+    //Intern: NAME ID EMAIL SCHOOL
 
 
-//Manager Function
+    function addIntern() {
+        inquirer
+            .prompt([
+                {
+                    type: 'input',
+                    name: 'name',
+                    message: 'Enter your name',
+                },
+                {
+                    type: 'input',
+                    name: 'id',
+                    message: 'Enter your ID',
+                },
+                {
+                    type: 'input',
+                    name: 'email',
+                    message: 'Enter your email',
+                },
+                {
+                    type: 'input',
+                    name: 'school',
+                    message: 'Enter your school name',
+                },
 
-//Manager: NAME ID EMAIL OFFICE NUMBER
+            ])
+            .then((answers) => {
+                const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
+                internArray.push(intern)
+                init()
+            })}
 
-function addManager() {
-    inquirer
-        .prompt([
-            {
-                type: 'input',
-                name: 'name',
-                message: 'Enter your name',
-            },
-            {
-                type: 'input',
-                name: 'id',
-                message: 'Enter your ID',
-            },
-            {
-                type: 'input',
-                name: 'email',
-                message: 'Enter your email',
-            },
-            {
-                type: 'input',
-                name: 'office',
-                message: 'Enter your Office number',
-            },
 
-        ])
-    .then((answers) => {
-        const manager = new Manager(answers.name, answers.id, answers.email, answers.office)
-        managerArray.push(manager)
-        init()
-    })
+        //Manager Function
 
+        //Manager: NAME ID EMAIL OFFICE NUMBER
+
+        function addManager() {
+            inquirer
+                .prompt([
+                    {
+                        type: 'input',
+                        name: 'name',
+                        message: 'Enter your name',
+                    },
+                    {
+                        type: 'input',
+                        name: 'id',
+                        message: 'Enter your ID',
+                    },
+                    {
+                        type: 'input',
+                        name: 'email',
+                        message: 'Enter your email',
+                    },
+                    {
+                        type: 'input',
+                        name: 'office',
+                        message: 'Enter your Office number',
+                    },
+
+                ])
+                .then((answers) => {
+                    const manager = new Manager(answers.name, answers.id, answers.email, answers.office)
+                    managerArray.push(manager)
+                    init()
+                })}
+
+init();

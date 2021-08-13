@@ -1,13 +1,12 @@
 //create variables with require keyword for prompts through inquirer
-const Engineer = require("./lib/Engineer");
-const Intern = require("./lib/Intern");
-const Manager = require("./lib/Manager");
+const template = require('./templates')
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-const engineerArray = [];
-const internArray = [];
-const managerArray = [];
+
 //initial prompt for adding teammates
 function init() {
     inquirer
@@ -68,8 +67,8 @@ function addEngineer() {
             },
 
         ])
-        .then((answers) => {
-            const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
+        .then((engineerAnswer) => {
+            const engineer = new Engineer(engineerAnswer.name, engineerAnswer.id, engineerAnswer.email, engineerAnswer.github)
             engineerArray.push(engineer)
             init()
         })}
@@ -105,9 +104,9 @@ function addEngineer() {
                 },
 
             ])
-            .then((answers) => {
-                const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
-                internArray.push(intern)
+            .then((internAnswer) => {
+                const intern = new Intern(internAnswer.name, internAnswer.id, internAnswer.email, internAnswer.school)
+                internArray.push(internAnswer)
                 init()
             })}
 
@@ -141,10 +140,11 @@ function addEngineer() {
                     },
 
                 ])
-                .then((answers) => {
-                    const manager = new Manager(answers.name, answers.id, answers.email, answers.office)
+                .then((managerAnswer) => {
+                    const manager = new Manager(managerAnswer.name, managerAnswer.id, managerAnswer.email, managerAnswer.office)
                     managerArray.push(manager)
                     init()
                 })}
 
 init();
+

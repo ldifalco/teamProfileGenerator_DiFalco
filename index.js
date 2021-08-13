@@ -19,7 +19,7 @@ function init() {
                 choices: [
                     'Engineer',
                     'Intern',
-                    'Team Manager',
+                    'Manager',
                     'No more new employees'
 
                 ]
@@ -34,6 +34,8 @@ function init() {
             } else if (choice.newTeammate === 'Manager') {
                 addManager()
             } else {
+                console.log('Welcome to your new team!');
+                //console log message to make sure end function works
                 newTeam();
             }
     })}
@@ -174,7 +176,7 @@ function addEngineer() {
         <div class="col-sm">
         <div class="card" style="width: 18rem;">
           <div class="card-body">
-            <h1 class="card-title">Engineer</h1>
+            <h1 class="card-title">Engineer, aka the workerbee</h1>
             <h4 class="card-text">${engineerArray[i].name}</h4>
           </div>
           <div class="card-body contents">
@@ -195,7 +197,7 @@ function addEngineer() {
         <div class="col-sm">
         <div class="card" style="width: 18rem;">
           <div class="card-body">
-            <h1 class="card-title">Intern</h1>
+            <h1 class="card-title">Intern, aka the FNG</h1>
             <h4 class="card-text">${internArray[i].name}</h4>
           </div>
           <div class="card-body contents">
@@ -215,14 +217,14 @@ function addEngineer() {
         <div class="col-sm">
         <div class="card" style="width: 18rem;">
           <div class="card-body">
-            <h1 class="card-title">Manager</h1>
+            <h1 class="card-title">Manager, aka Bossman</h1>
             <h4 class="card-text">${managerArray[i].name}</h4>
           </div>
           <div class="card-body contents">
             <ul class="list-group list-group-flush">
               <li class="list-group-item">ID: ${managerArray[i].id}</li>
               <li class="list-group-item">Email: <a href="mailto:${managerArray[i].email}">${managerArray[i].email}</a></li>
-              <li class="list-group-item">Office Number: ${managerArray[i].office}</li>
+              <li class="list-group-item">Office Number: ${managerArray[i].officeNumber}</li>
             </ul>
           </div>
         </div>
